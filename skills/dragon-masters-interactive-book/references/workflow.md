@@ -2,9 +2,9 @@
 
 ## 输入与现状
 
-先确认正在做DM1整书、单章样章、修复还是原创演示。已经批准的范围继续执行，不把每个内部步骤变成确认问题。用户要求先讨论时停在计划；缺页只阻止对应章节。工具包不带原书，必须实际读取提供的书与许可范围。整书只有书名或章节检查表时，不能编造正文。
+先确认正在做DM1整书、单章样章还是修复。此Skill只制作DM1。已经批准的范围继续执行，不把每个内部步骤变成确认问题。用户要求先讨论时停在计划；缺页只阻止对应章节。工具包不带原书，必须实际读取提供的书与许可范围。整书只有书名或章节检查表时，不能编造正文。
 
-用`new_project.py --profile dm1 --destination NEW_DIR`生成工程；具体字段见production-records.md。production.json初始为planning，所有章节待补，engine-reference只是机制参考。不要把它改名后当成DM1交付。
+用`new_project.py --destination NEW_DIR`生成工程；具体字段见production-records.md。production.json初始为planning，所有章节待补，engine-reference只是空内容引擎骨架。不要把它改名后当成DM1交付。
 
 ## 1 读完整输入
 

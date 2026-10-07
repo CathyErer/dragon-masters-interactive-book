@@ -21,7 +21,11 @@
           "pass": true
         },
         {
-          "name": "new demos have independent storage",
+          "name": "DM1 skeleton contains no sample content",
+          "pass": true
+        },
+        {
+          "name": "other profile options rejected",
           "pass": true
         },
         {
@@ -42,6 +46,10 @@
         },
         {
           "name": "missing track sprite rejected",
+          "pass": true
+        },
+        {
+          "name": "public gate rejects non-DM1",
           "pass": true
         },
         {
@@ -346,6 +354,18 @@
         {
           "name": "placed prop retains dimensions",
           "pass": true
+        },
+        {
+          "name": "DM1 skeleton shows target title",
+          "pass": true
+        },
+        {
+          "name": "incomplete DM1 skeleton cannot start",
+          "pass": true
+        },
+        {
+          "name": "DM1 skeleton has no demo story",
+          "pass": true
         }
       ],
       "errors": [],
@@ -353,14 +373,14 @@
     }
   },
   "runtimeSha256": {
-    "app.js": "47a2eddbf9be20ccd5a500c285d8f088aea418a2fe2168b6dde0383b8ec4dc8a",
+    "app.js": "beaf7187ae1dd752b9d24ba719fae376afc7ea533d39bae69b86e0183dd1fe6d",
     "art/gear.svg": "797e1ce814dfeb5b4545d778bae35da7db785cd815e651d81d6653216047f105",
     "art/lit.svg": "f1d0a80fa41bcdaf063897a9cc212bb588670d1ed9d6a9d725ecde8bee68a89d",
     "art/workshop.svg": "9b4ea756244d6b5ffe0cb3ed7d9321737e3b092f452e51106bf232521375f009",
     "audio/motion.wav": "6dc81cafe82abd01a96a78bb849ba3005eb7929ac1264c2bf196ef4c3053d113",
     "audio/mystery.wav": "7cbb422757d5219ccbe8a7fa3b6a3197a83e4d4155aea125a99312d6cd22d032",
     "audio/relief.wav": "1f39e08bb057c7ae3041b7c9196a245878e314411f7b33f0917dc289a1086456",
-    "index.html": "cee3347752b26aac14f8e36e821a3ea5bac18328f0a2c51e97dc8aaec0f489e3",
+    "index.html": "1cb79688aefac40a6d9a3df13e8473bb57ef266f694c16757f9b9d903f1e700d",
     "story.js": "7cdd044dd7ba79f2df5e8f568e656fbe5764c574ab69227fb29c2c4e999a6434",
     "story.json": "d00f66404293ca6cef95aa115586d6502450217eaef985195c43e5eee50f7192",
     "style.css": "b766260ab10a4495d2a7415ee62849aba9bafdf69cce70c243aea679e6b0d6b3",
@@ -372,12 +392,14 @@
     "static": "pass; 15 assets; syntax and extracted directory with spaces passed",
     "productionGate": "correctly incomplete: in-review and 8 pending human/browser checks; no structural coverage/state/provenance/hash error",
     "browser": "not performed: trial browser policy refused local-file navigation",
-    "fullDM1Reproduction": "not performed"
+    "fullDM1Reproduction": "not performed",
+    "scope": "Development-stage internal original-source trial before final DM1-only routing; not a supported public mode or final full-DM1 trial."
   },
   "fixesFromTrial": [
     "Document original profile",
     "Remove demo cover branding/background",
     "Use action-specific keyboard labels",
     "Configurable prop width/aspect with stable placed geometry"
-  ]
+  ],
+  "publicScope": "DM1 Book 1 only; original/demo modes removed; empty engine scaffold only."
 }

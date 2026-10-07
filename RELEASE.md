@@ -5,7 +5,7 @@ CathyErer · MIT · 2026-10-07. This update completes the public production work
 ## Changes
 
 - Full Book 1 route: 16 chapter checkpoints, source/event/scene coverage, character and scene planning, image/music prompts, asset provenance and actual QA records.
-- Separate production workspace and explicit original demo; independent save IDs. Original-source profile documented.
+- One public route: create DM1 Book 1 only. Removed original-story/demo-launch modes; the new workspace has 16 pending chapters and an empty engine skeleton without demonstration artwork or audio.
 - Integrated fixed-track sprites, retained endpoints and non-destructive replay; action-aware keyboard labels and configurable prop geometry.
 - Multiple scenes per chapter with optional Quiz; source-driven cover/background/ending, evidence Journal and optional keyword retells.
 - Question mode hides expanded reading, captions and Journal; missing background/sprite blocks controls and offers Retry.
@@ -23,6 +23,6 @@ Both archives are reproducible from the same source. The source Skill is `skills
 
 ## Verification and limits
 
-83 final contract/browser assertions passed (14 + 28 + 41), plus structure/syntax checks. Detailed evidence and the limited independent original-source trial are in QA.md. Complete DM1 independent reproduction and classroom acceptance remain unverified.
+88 final contract/browser assertions passed (16 + 28 + 44), plus structure/syntax checks. Detailed evidence and the limited independent original-source trial are in QA.md. Complete DM1 independent reproduction and classroom acceptance remain unverified.
 
 Repository: https://github.com/CathyErer/dragon-masters-interactive-book

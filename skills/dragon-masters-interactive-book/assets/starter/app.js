@@ -82,7 +82,7 @@ async function replayTrack(s){
  }catch{if(token!==epoch)return;button('Return to story','返回故事',render);}
 }
 function renderCover(){
- document.title=bookData.title.en;$('cover').style.backgroundImage='linear-gradient(90deg,#102733ef,#163540bc),url('+JSON.stringify(bookData.scenes[0].image)+')';$('bookTitle').innerHTML=text(bookData.title);$('coverTitle').innerHTML=text(bookData.title);
+ document.title=bookData.title.en;$('cover').style.backgroundImage='linear-gradient(90deg,#102733ef,#163540bc),url('+JSON.stringify(bookData.scenes[0]?.image||'')+')';$('bookTitle').innerHTML=text(bookData.title);$('coverTitle').innerHTML=text(bookData.title);
  $('coverDescription').innerHTML=text(bookData.description||{en:'An illustrated interactive reading journey.',zh:'图画互动阅读之旅。'});
  $('coverCount').textContent=bookData.scenes.length+' '+label('scenes','幕');
 }
@@ -110,3 +110,4 @@ $('restart').addEventListener('click',()=>{if(confirm('Restart this story? Saved
 window.addEventListener('blur',resetGesture);document.addEventListener('visibilitychange',()=>{resetGesture();if(document.hidden)score.stop();else score.set(mood());});reduce.addEventListener('change',()=>{if(opened)render();});musicUI();
 
 renderCover();
+if(!bookData.scenes.length){$('open').disabled=true;$('music').disabled=true;$('close').disabled=true;$('coverDescription').textContent='DM1 source and scenes are awaiting verification. / DM1原书与场景资料待核对。';}

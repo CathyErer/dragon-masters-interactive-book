@@ -2,7 +2,7 @@
 
 This profile is a production specification, not the book, a story transcription, or a ready-made adaptation. The reader supplies a readable copy they are permitted to use. Do not substitute model memory for missing pages. Do not distribute supplied source files with the toolkit.
 
-Read [dm1-chapter-checkpoints.md](dm1-chapter-checkpoints.md) and [production-records.md](production-records.md) before expanding the book. Initialize with new_project.py --profile dm1; do not rename the demo.
+Read [dm1-chapter-checkpoints.md](dm1-chapter-checkpoints.md) and [production-records.md](production-records.md) before expanding the book. Initialize with new_project.py; do not rename the demo.
 
 ## Inputs and output contract
 

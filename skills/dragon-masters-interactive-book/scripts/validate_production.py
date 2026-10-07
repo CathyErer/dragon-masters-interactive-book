@@ -6,7 +6,7 @@ from validate_book import validate
 def runtime_hashes(book):
  return {p.relative_to(book).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(book.rglob('*')) if p.is_file()}
 
-def validate_production(root):
+def validate_production(root, *, require_dm1=True):
  errors=[]
  def need(ok,msg):
   if not ok:errors.append(msg)
@@ -16,7 +16,7 @@ def validate_production(root):
   if p!=base.resolve() and base.resolve() not in p.parents:raise ValueError('Path escapes project: '+str(ref))
   return p
  try:
-  m=read('production.json');need(m['status']=='complete','production is not complete')
+  m=read('production.json');need(not require_dm1 or m['profile']=='dm1','this production Skill only accepts DM1');need(m['status']=='complete','production is not complete')
   need(m['source']['coverage']=='complete' and bool(m['source']['edition']) and bool(m['source']['permittedUse']),'source coverage/edition/permission missing')
   for name in ['SOURCE.md','character-bible.md']:need(bool((root/name).read_text().strip()),'missing '+name)
   book=local(root,m['bookDirectory']);runtime=validate(book);errors.extend(runtime['errors'])

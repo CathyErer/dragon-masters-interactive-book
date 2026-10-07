@@ -22,25 +22,15 @@
 
 明确只给一章时只做该章；不要虚构其余章节。已有同一范围的批准不重复询问；用户要求先讨论时停止在方案。
 
-## 两个清楚分开的入口
-
-**制作DM1（默认）：**
+## 制作 DM1：唯一入口
 
 ```sh
-python3 skills/dragon-masters-interactive-book/scripts/new_project.py --destination ./my-dm1 --profile dm1
+python3 skills/dragon-masters-interactive-book/scripts/new_project.py --destination ./my-dm1
 ```
 
-生成待填的`SOURCE.md`、16章`production.json`、证据CSV、人物表、场景状态表、提示词/素材记录、音乐表和QA记录。`engine-reference/`只是代码机制参考；完成来源与样章审阅后，实际作品放`book/`。这是制作工程，不是已生成整本书。
+只生成《Rise of the Earth Dragon》第一本的制作工程：`SOURCE.md`、16章`production.json`、证据CSV、人物表、场景状态表、提示词/素材记录、音乐表和QA记录。`engine-reference/`是没有故事内容的引擎骨架，不含灯塔场景或示例音频；完成原书与样章核对后，实际作品放`book/`。
 
-制作其他已提供的原创故事时用`--profile original --title "故事名"`，再按真实章节填写production.json；不要硬套DM1的16章。
-
-**只看原创机制演示：**
-
-```sh
-python3 skills/dragon-masters-interactive-book/scripts/new_project.py --destination ./demo --profile demo
-```
-
-打开`demo/index.html`即可。观察→移动零件→点亮灯；示例SVG和本地合成音乐均原创。每次复制使用独立保存ID。它不代表DM1内容或精修2.5D画质。
+本Skill仅用于制作DM1，不提供原创故事模式或运行示例的使用选项。缺原书时保持待补；不能把测试素材改名当成DM1交付。
 
 ## 全流程文件
 
@@ -69,10 +59,10 @@ python3 skills/dragon-masters-interactive-book/scripts/validate_production.py my
 
 开发验证：`python3 tests/contracts.py`；`node tests/browser.cjs`与`node tests/production-browser.cjs`需Playwright，可用PLAYWRIGHT_MODULE与CHROME_PATH指定本机依赖。完整命令与证据范围见QA.md。
 
-**证据边界：**原创示例与组件回归、缺项拦截以及隔离调用审查分别记录；没有据此声称另一位使用者已独立生成并验收整本DM1。AI插图与音乐也不保证与私用成品相同。
+**证据边界：**内部组件回归、缺项拦截以及隔离调用审查分别记录；没有据此声称另一位使用者已独立生成并验收整本DM1。AI插图与音乐也不保证与私用成品相同。
 
 ## 许可和交付
 
 代码、制作说明及原创示例采用MIT，见LICENSE和ASSET_PROVENANCE.md。Dragon Masters书籍文字、角色及第三方视觉参考不因该许可获得再发布权；使用者提供的来源保留在自己的授权项目中。
 
-仓库：[CathyErer/dragon-masters-interactive-book](https://github.com/CathyErer/dragon-masters-interactive-book)。本仓库只发布工具，不附私人笔记、原书PDF、人物素材或私人课堂成品。打包：`python3 scripts/package_candidate.py --destination NEW_OUTPUT_DIR`。
+仓库：[CathyErer/dragon-masters-interactive-book](https://github.com/CathyErer/dragon-masters-interactive-book)。本仓库发布DM1制作工具；内部原创测试素材仅用于开发回归，不是面向使用者的制作模式。不附私人笔记、原书PDF、人物素材或私人课堂成品。打包：`python3 scripts/package_candidate.py --destination NEW_OUTPUT_DIR`。

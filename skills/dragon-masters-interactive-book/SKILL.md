@@ -1,6 +1,6 @@
 ---
 name: dragon-masters-interactive-book
-description: Build, revise, or audit a complete Dragon Masters Book 1 browser interactive book from a user-supplied Rise of the Earth Dragon source. Includes full-book evidence planning, original consistent art, narrative actions, chapter transitions, bilingual text, event-based music, progress, quizzes and optional retells. Also supports explicitly requested original-story adaptations; the included demo is a mechanics reference, never a substitute for the requested book.
+description: Build, revise, or audit a complete Dragon Masters Book 1 browser interactive book from a user-supplied Rise of the Earth Dragon source. Includes full-book evidence planning, original consistent art, narrative actions, chapter transitions, bilingual text, event-based music, progress, quizzes and optional retells. This Skill targets Book 1 only; internal test fixtures are not user-facing story modes.
 metadata:
   version: "0.3.0"
 ---
@@ -9,13 +9,12 @@ metadata:
 
 Deliver the requested **whole source story**, with editable production records and a runnable desktop book. Read the supplied book; never use memory, this profile, or generated pictures as proof of its contents. This public Skill needs no private notes, author-specific paths, prior chats or private book archive.
 
-## Start and choose the correct route
+## Start DM1 production
 
 1. Read [workflow.md](references/workflow.md). Establish source coverage, intended use, reader level, language, desktop size and output directory. Follow the user's existing approvals. Ask only for missing decisions that block the current stage.
-2. For *Rise of the Earth Dragon*, read [the Book 1 profile](references/rise-of-the-earth-dragon.md) and [chapter checkpoints](references/dm1-chapter-checkpoints.md). This is a 16-chapter production target to verify against the supplied edition, not permission to fabricate missing chapters. Other Dragon Masters books need their own source-derived plan.
-3. **Production route:** `python3 scripts/new_project.py --destination NEW_DIR --profile dm1 --title "Rise of the Earth Dragon"`. This creates a planning workspace, blank chapter coverage and an unmodified engine under `engine-reference/`. It deliberately does not present the lighthouse example as the requested book. Fill the records; build actual runtime files under `book/` after source and sample review.
-4. **Demo route, only when requested:** add `--profile demo`. This copies the original three-scene example. Running it proves mechanics, not source-story production.
-5. Report source gaps and the next concrete deliverable. With only one chapter, produce only that chapter's plan/sample and label full-book work incomplete. With no source, prepare the input checklist; do not turn checkpoints into invented book content.
+2. For *Rise of the Earth Dragon*, read [the Book 1 profile](references/rise-of-the-earth-dragon.md) and [chapter checkpoints](references/dm1-chapter-checkpoints.md). This is a 16-chapter production target to verify against the supplied edition, not permission to fabricate missing chapters. Do not use this Skill to produce other books or original stories; they require a separately scoped workflow.
+3. Run `python3 scripts/new_project.py --destination NEW_DIR`. This creates the DM1 planning workspace, 16 blank chapter records and a content-empty engine skeleton under `engine-reference/`. Fill the records; build actual runtime files under `book/` after source and sample review. There is no original-story mode or demo-launch option.
+4. Report source gaps and the next concrete deliverable. With only one chapter, produce only that chapter's plan/sample and label full-book work incomplete. With no source, prepare the input checklist; do not turn checkpoints into invented book content.
 
 ## Complete the production stages
 

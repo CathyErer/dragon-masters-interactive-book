@@ -1,6 +1,6 @@
 # 可执行的制作记录
 
-`new_project.py --profile dm1`创建下列文件。字段未知用空值与待补状态；禁止为了通过检查虚构证据。
+`new_project.py`创建下列文件。字段未知用空值与待补状态；禁止为了通过检查虚构证据。
 
 - SOURCE.md：原书文件/版本、使用范围、页码对应、扫描缺口、角色参考与未核项。原始书籍放在使用者的私用输入目录。
 - chapter-evidence.csv：chapter_id、event_id、locator、fact、kind（source/adaptation）、status。每个必需事件至少有一个真实locator和核对后的fact；不要将检查表当locator。
