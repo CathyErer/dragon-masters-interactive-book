@@ -1,0 +1,383 @@
+{
+  "version": "0.3.0",
+  "date": "2026-10-07",
+  "results": {
+    "contracts": {
+      "checks": [
+        {
+          "name": "production never presents demo as book",
+          "pass": true
+        },
+        {
+          "name": "16 missing chapters stay visible",
+          "pass": true
+        },
+        {
+          "name": "incomplete production rejected",
+          "pass": true
+        },
+        {
+          "name": "duplicate destination protected",
+          "pass": true
+        },
+        {
+          "name": "new demos have independent storage",
+          "pass": true
+        },
+        {
+          "name": "fresh demo validates",
+          "pass": true
+        },
+        {
+          "name": "missing image rejected",
+          "pass": true
+        },
+        {
+          "name": "non-quiz advance supported",
+          "pass": true
+        },
+        {
+          "name": "integrated track supported",
+          "pass": true
+        },
+        {
+          "name": "missing track sprite rejected",
+          "pass": true
+        },
+        {
+          "name": "coherent synthetic records accepted",
+          "pass": true
+        },
+        {
+          "name": "stale runtime QA rejected",
+          "pass": true
+        },
+        {
+          "name": "missing event and source evidence rejected",
+          "pass": true
+        },
+        {
+          "name": "short demo cannot count as full DM1",
+          "pass": true
+        }
+      ],
+      "scope": "Tool contracts and synthetic gate tests, not full-book content acceptance"
+    },
+    "demo": {
+      "checks": [
+        {
+          "name": "result precedes quiz 0",
+          "pass": true
+        },
+        {
+          "name": "quiz hides caption 0",
+          "pass": true
+        },
+        {
+          "name": "drag requires release",
+          "pass": true
+        },
+        {
+          "name": "result precedes quiz 1",
+          "pass": true
+        },
+        {
+          "name": "quiz hides caption 1",
+          "pass": true
+        },
+        {
+          "name": "repeat blur cancels hold",
+          "pass": true
+        },
+        {
+          "name": "repeat blur cancels hold",
+          "pass": true
+        },
+        {
+          "name": "result precedes quiz 2",
+          "pass": true
+        },
+        {
+          "name": "quiz hides caption 2",
+          "pass": true
+        },
+        {
+          "name": "all scenes complete",
+          "pass": true
+        },
+        {
+          "name": "reload keeps progress and language",
+          "pass": true
+        },
+        {
+          "name": "portable fast track reaches end",
+          "pass": true
+        },
+        {
+          "name": "portable track commits on release",
+          "pass": true
+        },
+        {
+          "name": "component cleanup",
+          "pass": true
+        },
+        {
+          "name": "result precedes quiz 0",
+          "pass": true
+        },
+        {
+          "name": "quiz hides caption 0",
+          "pass": true
+        },
+        {
+          "name": "drag requires release",
+          "pass": true
+        },
+        {
+          "name": "result precedes quiz 1",
+          "pass": true
+        },
+        {
+          "name": "quiz hides caption 1",
+          "pass": true
+        },
+        {
+          "name": "repeat blur cancels hold",
+          "pass": true
+        },
+        {
+          "name": "repeat blur cancels hold",
+          "pass": true
+        },
+        {
+          "name": "result precedes quiz 2",
+          "pass": true
+        },
+        {
+          "name": "quiz hides caption 2",
+          "pass": true
+        },
+        {
+          "name": "all scenes complete",
+          "pass": true
+        },
+        {
+          "name": "reload keeps progress and language",
+          "pass": true
+        },
+        {
+          "name": "portable fast track reaches end",
+          "pass": true
+        },
+        {
+          "name": "portable track commits on release",
+          "pass": true
+        },
+        {
+          "name": "component cleanup",
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "scope": "Isolated original demo + component regression; not full-book reproduction or classroom acceptance"
+    },
+    "production": {
+      "checks": [
+        {
+          "name": "source title on cover",
+          "pass": true
+        },
+        {
+          "name": "no demo conclusion on cover",
+          "pass": true
+        },
+        {
+          "name": "intermediate scene has no quiz",
+          "pass": true
+        },
+        {
+          "name": "track Escape cancels",
+          "pass": true
+        },
+        {
+          "name": "track endpoint waits for release/Enter",
+          "pass": true
+        },
+        {
+          "name": "reading opens before question",
+          "pass": true
+        },
+        {
+          "name": "quiz hides expanded reading",
+          "pass": true
+        },
+        {
+          "name": "quiz hides journal",
+          "pass": true
+        },
+        {
+          "name": "quiz clears caption",
+          "pass": true
+        },
+        {
+          "name": "wrong answer cannot finish",
+          "pass": true
+        },
+        {
+          "name": "review restores reading",
+          "pass": true
+        },
+        {
+          "name": "completed track retains sprite",
+          "pass": true
+        },
+        {
+          "name": "replay preserves completed story",
+          "pass": true
+        },
+        {
+          "name": "custom ending shown",
+          "pass": true
+        },
+        {
+          "name": "retell begins shuffled",
+          "pass": true
+        },
+        {
+          "name": "retell can verify sequence",
+          "pass": true
+        },
+        {
+          "name": "progress language and retell survive reload",
+          "pass": true
+        },
+        {
+          "name": "retell does not block closing",
+          "pass": true
+        },
+        {
+          "name": "source title on cover",
+          "pass": true
+        },
+        {
+          "name": "no demo conclusion on cover",
+          "pass": true
+        },
+        {
+          "name": "intermediate scene has no quiz",
+          "pass": true
+        },
+        {
+          "name": "track Escape cancels",
+          "pass": true
+        },
+        {
+          "name": "track endpoint waits for release/Enter",
+          "pass": true
+        },
+        {
+          "name": "reading opens before question",
+          "pass": true
+        },
+        {
+          "name": "quiz hides expanded reading",
+          "pass": true
+        },
+        {
+          "name": "quiz hides journal",
+          "pass": true
+        },
+        {
+          "name": "quiz clears caption",
+          "pass": true
+        },
+        {
+          "name": "wrong answer cannot finish",
+          "pass": true
+        },
+        {
+          "name": "review restores reading",
+          "pass": true
+        },
+        {
+          "name": "completed track retains sprite",
+          "pass": true
+        },
+        {
+          "name": "replay preserves completed story",
+          "pass": true
+        },
+        {
+          "name": "custom ending shown",
+          "pass": true
+        },
+        {
+          "name": "retell begins shuffled",
+          "pass": true
+        },
+        {
+          "name": "retell can verify sequence",
+          "pass": true
+        },
+        {
+          "name": "progress language and retell survive reload",
+          "pass": true
+        },
+        {
+          "name": "retell does not block closing",
+          "pass": true
+        },
+        {
+          "name": "missing sprite blocks action",
+          "pass": true
+        },
+        {
+          "name": "failed asset does not complete",
+          "pass": true
+        },
+        {
+          "name": "sprite retry recovers",
+          "pass": true
+        },
+        {
+          "name": "custom prop aspect ratio applied",
+          "pass": true
+        },
+        {
+          "name": "placed prop retains dimensions",
+          "pass": true
+        }
+      ],
+      "errors": [],
+      "scope": "Original synthetic fixture; not full DM1 adaptation"
+    }
+  },
+  "runtimeSha256": {
+    "app.js": "47a2eddbf9be20ccd5a500c285d8f088aea418a2fe2168b6dde0383b8ec4dc8a",
+    "art/gear.svg": "797e1ce814dfeb5b4545d778bae35da7db785cd815e651d81d6653216047f105",
+    "art/lit.svg": "f1d0a80fa41bcdaf063897a9cc212bb588670d1ed9d6a9d725ecde8bee68a89d",
+    "art/workshop.svg": "9b4ea756244d6b5ffe0cb3ed7d9321737e3b092f452e51106bf232521375f009",
+    "audio/motion.wav": "6dc81cafe82abd01a96a78bb849ba3005eb7929ac1264c2bf196ef4c3053d113",
+    "audio/mystery.wav": "7cbb422757d5219ccbe8a7fa3b6a3197a83e4d4155aea125a99312d6cd22d032",
+    "audio/relief.wav": "1f39e08bb057c7ae3041b7c9196a245878e314411f7b33f0917dc289a1086456",
+    "index.html": "cee3347752b26aac14f8e36e821a3ea5bac18328f0a2c51e97dc8aaec0f489e3",
+    "story.js": "7cdd044dd7ba79f2df5e8f568e656fbe5764c574ab69227fb29c2c4e999a6434",
+    "story.json": "d00f66404293ca6cef95aa115586d6502450217eaef985195c43e5eee50f7192",
+    "style.css": "b766260ab10a4495d2a7415ee62849aba9bafdf69cce70c243aea679e6b0d6b3",
+    "track-flight.js": "eeb3f3d7568c3ab383c023a4a6302faca52ce90a4d86b31752c84a013ce0cedf"
+  },
+  "independentTrial": {
+    "input": "Original two-chapter Ribbon Bridge text; public Skill only",
+    "output": "8 scenes, 2 chapter quizzes, 1 optional retell; new original SVG art",
+    "static": "pass; 15 assets; syntax and extracted directory with spaces passed",
+    "productionGate": "correctly incomplete: in-review and 8 pending human/browser checks; no structural coverage/state/provenance/hash error",
+    "browser": "not performed: trial browser policy refused local-file navigation",
+    "fullDM1Reproduction": "not performed"
+  },
+  "fixesFromTrial": [
+    "Document original profile",
+    "Remove demo cover branding/background",
+    "Use action-specific keyboard labels",
+    "Configurable prop width/aspect with stable placed geometry"
+  ]
+}

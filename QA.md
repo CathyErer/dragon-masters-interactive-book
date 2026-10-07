@@ -1,15 +1,24 @@
-# Local candidate 0.2.0 verification
+# 0.3.0 verification — 2026-10-07
 
-2026-09-09. This is a local review candidate, not a published release.
+- Skill structure validator: PASS.
+- Project/coverage contracts: **14/14** PASS (`python3 tests/contracts.py`).
+- Original demo/component regression: **28/28** PASS (`node tests/browser.cjs`).
+- Production-engine fixture: **41/41** PASS (`node tests/production-browser.cjs`).
+- Browser runs: real local Chrome at 1280×800 normal and 1440×900 reduced motion; zero script errors on final runs. JavaScript and Python syntax checks passed.
+- Checks include source-driven cover/ending, intermediate scenes without Quiz, fixed-track endpoint commitment/cancellation, retained completed sprite, progress-preserving replay, answer isolation including expanded reading/Journal, wrong answers, optional retell/reload/closing, missing-sprite retry, and identical prop dimensions before/after placement.
+- Screenshots of the original demo and production-engine fixture were inspected. They are functional SVG examples, not a new DM1 illustration set. A new geometry regression exposed intrinsic image height overriding the requested prop ratio; explicit image-frame dimensions fixed it and the final test passes.
+- `tests/results-0.3.0.json` contains individual assertions, current runtime hashes and exact scope. Test fixture metadata is synthetic and is never evidence of source-book acceptance.
 
-- Skill structure validator: passed.
-- Standalone starter copied to a new directory containing spaces: passed; six referenced art/audio resources validated.
-- Chrome browser regression at 1280×800 and 1440×900 with reduced motion: 28 assertions passed, zero page errors on the final run.
-- Covered observe/drag/hold, repeated blur cancellation, release-to-commit, result before Quiz, hidden answer caption, saved progress/language, sparse fast input on the separate fixed-track component and cleanup.
-- Inspected the original SVG lamp-result screenshot. These illustrations demonstrate the mechanism, not a finished 2.5D book style.
-- An intermittent negative audio-fade fraction was found in an earlier run and fixed by clamping the interpolation fraction to [0,1]. The final run passed.
-- Public hygiene scan found no flagged private paths, emails, key-like strings or unreviewed file types. This heuristic is not a rights review or security guarantee.
+## Independent original-source trial
 
-Not established: independent full-book reproduction from a new user's source, trace-specific regression, classroom acceptance, subjective music quality, publication rights, license selection or remote release.
+An isolated agent received only the public Skill and an original two-chapter story. It produced 8 scenes, 2 chapter quizzes, 1 optional retell, new SVG art and the production records. Runtime dependency validation (15 assets), JavaScript syntax and extraction to a fresh directory containing spaces passed.
 
-Run `python3 scripts/audit_public.py` from the repository root. Browser tests are in `tests/browser.cjs`; optional `OUTPUT_REPORT` and `SCREENSHOT_DIR` save local evidence without embedding machine-specific paths into this toolkit.
+The production gate correctly remains incomplete: `in-review` plus 8 pending browser, visual and listening checks, with no chapter mapping, continuity, provenance or hash errors. The trial browser refused local-file navigation on policy grounds; no alternative route was attempted. This is a limited independent workflow trial, not browser acceptance or a full DM1 reproduction.
+
+The trial found four gaps now repaired in the public source: original-profile documentation, hard-coded demo cover strings/background, a mechanical “Turn” keyboard label for non-turning actions, and configurable long-prop geometry.
+
+## Reproduce and interpret
+
+Python scripts use the standard library. Browser tests need Playwright; `PLAYWRIGHT_MODULE` and `CHROME_PATH` can point at an installed runtime. `OUTPUT_REPORT` and `SCREENSHOT_DIR` save results outside the repository. Public file scanning: `python3 scripts/audit_public.py`. Build and member-hash checks: `python3 scripts/package_candidate.py --destination NEW_DIRECTORY`.
+
+Not established: a new user's complete 16-chapter DM1 adaptation, trace-specific browser regression, subjective music quality, classroom results, or teacher acceptance of a newly generated book. Publishing a tested toolkit does not establish those claims.

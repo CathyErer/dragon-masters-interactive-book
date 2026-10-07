@@ -1,42 +1,44 @@
 ---
 name: dragon-masters-interactive-book
-description: Create or revise an illustrated browser-based interactive book from user-supplied story sources, including evidence-grounded scene planning, consistent character art, state-specific illustrations, narrative gestures, bilingual text, original music cues, persistent progress, and quality checks. Use when the user requests an interactive reading experience, not an ordinary workbook or a finished third-party book download.
+description: Build, revise, or audit a complete Dragon Masters Book 1 browser interactive book from a user-supplied Rise of the Earth Dragon source. Includes full-book evidence planning, original consistent art, narrative actions, chapter transitions, bilingual text, event-based music, progress, quizzes and optional retells. Also supports explicitly requested original-story adaptations; the included demo is a mechanics reference, never a substitute for the requested book.
+metadata:
+  version: "0.3.0"
 ---
 
 # Dragon Masters Interactive Book
 
-Produce a continuous illustrated reading experience whose actions change the story scene visibly. This public candidate is self-contained: do not assume access to a particular author's private folders, notes, images or conversation history.
+Deliver the requested **whole source story**, with editable production records and a runnable desktop book. Read the supplied book; never use memory, this profile, or generated pictures as proof of its contents. This public Skill needs no private notes, author-specific paths, prior chats or private book archive.
 
-## Start
+## Start and choose the correct route
 
-Read [workflow.md](references/workflow.md). Establish source, audience, language, platform, visual direction, output directory and permitted use. Keep source facts separate from teaching adaptations and unknowns. If a source is unavailable, pause only its dependent narrative work; use the included original example to explain the mechanics, not to invent the missing book.
+1. Read [workflow.md](references/workflow.md). Establish source coverage, intended use, reader level, language, desktop size and output directory. Follow the user's existing approvals. Ask only for missing decisions that block the current stage.
+2. For *Rise of the Earth Dragon*, read [the Book 1 profile](references/rise-of-the-earth-dragon.md) and [chapter checkpoints](references/dm1-chapter-checkpoints.md). This is a 16-chapter production target to verify against the supplied edition, not permission to fabricate missing chapters. Other Dragon Masters books need their own source-derived plan.
+3. **Production route:** `python3 scripts/new_project.py --destination NEW_DIR --profile dm1 --title "Rise of the Earth Dragon"`. This creates a planning workspace, blank chapter coverage and an unmodified engine under `engine-reference/`. It deliberately does not present the lighthouse example as the requested book. Fill the records; build actual runtime files under `book/` after source and sample review.
+4. **Demo route, only when requested:** add `--profile demo`. This copies the original three-scene example. Running it proves mechanics, not source-story production.
+5. Report source gaps and the next concrete deliverable. With only one chapter, produce only that chapter's plan/sample and label full-book work incomplete. With no source, prepare the input checklist; do not turn checkpoints into invented book content.
 
-Use [prompts.md](references/prompts.md) for runnable prompts at each stage. Confirm a short scene plan and character sheet before expensive full-book generation. The user's explicit plan-only/review gates remain controlling.
+## Complete the production stages
 
-## Choose the work
+Use [production-records.md](references/production-records.md) for exact files and [prompts.md](references/prompts.md) for stage-specific prompts.
 
-- For a user-supplied *Rise of the Earth Dragon*, read [rise-of-the-earth-dragon.md](references/rise-of-the-earth-dragon.md). It is a source-required production profile, not an embedded book. Follow the supplied story rather than replacing it with the demo.
+- **Read and plan:** chapter/page evidence → required events → ordered scene IDs → entry/action/result/exit → adjacent-state continuity. Preserve intermediate locations, clues, participants and final unresolved questions. Short adapted dialogue must not replace the source or become a wall of text.
+- **Lock visual identity:** [art-direction.md](references/art-direction.md). Verify character features from permitted references; create an approved identity sheet, scene cameras, before/after states and transparent props. Record missing evidence. Review a representative sample before expensive full-book assets unless that scope is already approved.
+- **Generate and inspect:** use the available image tool/artist with the actual identity references, exact prompts and state constraints. Inspect each result for identity, scale, light, duplicate props and premature reveals. A placeholder, prompt or successful API call is not a finished illustration.
+- **Build scene actions:** [interaction.md](references/interaction.md), [data-contract.md](references/data-contract.md). The engine supports observe, drag, hold, trace, advance and integrated track sprites. Many scenes may belong to a chapter; place its Story Check at the source-derived checkpoint, not automatically after every gesture. Extend the engine where the plan requires a new mechanic; do not silently substitute repeated clicks or a demo action.
+- **Score events:** [music.md](references/music.md). Use event-based original/appropriately licensed instrumental cues, local playback, persistent mute and gentle changes. No character speech by default. Procedural audio is a draft option; verify listening quality separately.
+- **Connect the whole book:** physical-book opening, desktop spread, English/bilingual switching, sequential locations, independent save ID, evidence Journal and optional retells. Implement and test multi-stage chapters, ending identity and closing; a chapter Quiz need not be the chapter's last event.
+- **Verify and repair:** [qa.md](references/qa.md). Run both validators, actual browser gestures and continuous whole-book routes. Compare the rendered story with source evidence. Work on concrete failures; avoid changing unrelated content.
 
-- Story planning: evidence table, entry/action/result/exit and adjacent-scene continuity in workflow.md.
-- Images: read [art-direction.md](references/art-direction.md); lock character identity, perspective and light state; generate original compositions with permitted references; inspect every result. Never use a failed image as the next identity anchor.
-- Music: read [music.md](references/music.md). Use event-based moods, not one flat loop for the whole story. Local procedural generator is included; service-based music is optional and requires the user's permitted workflow.
-- Interaction/animation: read [interaction.md](references/interaction.md). Use an action because it matches a story verb. Remove arbitrary swipes instead of making instructions longer.
-- Fixed-track sprite movement: use `assets/starter/track-flight.js` with a clean background and independently created sprite; instructions in interaction.md. It includes fast-input projection and frame-coalesced rendering, not free roaming.
-- Implementation: read [data-contract.md](references/data-contract.md); copy starter with `scripts/new_project.py` to a NEW directory. Edit story.json, regenerate story.js with `scripts/sync_story.py`, replace art/audio and validate. The three-scene story is a demonstration, not a fixed chapter count.
-- Repairs/release: read [qa.md](references/qa.md). Use visible behavior plus static checks; don't equate a successful click or image generation with acceptance.
+## Required invariants
 
-## Non-negotiable invariants
+- Action → visible result → observation → question/continuation. Preserve canonical cause, order and reveal timing; accidents are not player punishment.
+- One object across idle/drag/placed states. Real pictured targets define hit regions; use image coordinates and check both desktop sizes.
+- Decode backgrounds **and sprites** before enabling controls; failed loading blocks the scene with Retry. Cancel stale callbacks, blur/hidden gestures and abandoned input. Reduced motion changes presentation, not outcomes.
+- Hide answer-bearing captions **and expanded reading** during Quiz; offer explicit return to evidence instead. Wrong answers never complete a checkpoint.
+- Language, refresh, replay and rendering must not mutate committed facts. Keep stable scene/option IDs, validate saved data, preserve learned clues and save only committed outcomes.
+- Characters move only through fixed story actions. Use clean backgrounds plus independent layers for continuous motion; never slide a rectangular full illustration to imitate walking.
+- Preserve private inputs and the user's publication scope. Publishing this toolkit does not publish a supplied book or confer rights in third-party characters/art. Existing explicit publication authorization is sufficient; do not ask for it again.
 
-1. Preserve source order and reveal boundaries; don't make a canonical accident the reader's fault or expose later abilities early.
-2. Show the destination before asking for a destination-specific action. Carry clothing, props, dust, light and knowledge across scenes.
-3. Idle/drag/placed representations are one object. Don't overlay a draggable duplicate on a baked-in object. Hit regions follow the displayed image rectangle, not the entire browser.
-4. Show story dialogue before the question; hide answer-bearing dialogue and captions while Quiz is active. Prefer evidence/application questions, not copying adjacent text. Wrong answers receive hints; do not permanently lock the story.
-5. Language switches, rendering and refresh must not change story facts. Save committed outcomes, not half-finished gestures. Use stable IDs, version the schema and handle malformed storage.
-6. Cancel gesture/timer/image work on navigation, blur or reduced-motion changes as needed; stale callbacks cannot advance a different scene. Decode new art before showing its controls.
-7. Music starts after user action, has persistent mute, crossfades on meaningful events and pauses when hidden/closed. Music is never required to understand the plot.
-8. Keep desktop reading comfortable, reading text expandable, controls keyboard-reachable and motion reducible. Discuss mobile support separately rather than claiming it from responsive CSS.
-9. Do not send user sources/assets to services without the required permission, put credentials into files, or publish automatically. Source possession is not a distribution license.
+## Handoff
 
-## Deliver
-
-Hand off runnable HTML, local runtime assets, editable scene data, source/character/scene records, prompt set, audio provenance and QA results. Explain tools/dependencies, paid optional steps and human decisions. Preserve the user's existing work and keep public/private deliverables separate. Never claim a new-user forward test, classroom outcome or publication that was not performed.
+Run `python3 scripts/validate_book.py PROJECT/book` and `python3 scripts/validate_production.py PROJECT`. A successful structural check does not confirm source truth, artistic quality or browser behavior. Follow the QA matrix, package only intended runtime assets and editable records, and report complete/partial coverage, exact tests, dependencies and remaining human review. The public toolkit's tests are regression evidence; do not claim independent full-DM1 reproduction without actually making and reviewing that book.

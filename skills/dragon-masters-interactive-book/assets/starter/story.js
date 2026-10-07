@@ -82,6 +82,10 @@ window.BOOK = {
           "en": "Think about the empty space in the mechanism.",
           "zh": "想一想机关里的空位。"
         }
+      },
+      "evidence": {
+        "en": "An empty space sat above the red wheel. The gear was missing.",
+        "zh": "红轮上方有一个空位，齿轮不见了。"
       }
     },
     {
@@ -160,6 +164,10 @@ window.BOOK = {
           "en": "Look back at the part Mina repaired, not the weather.",
           "zh": "回想她修好的零件，而不是天气。"
         }
+      },
+      "evidence": {
+        "en": "The gear fitted. The lamp was still dark. One more action was needed.",
+        "zh": "齿轮装好了。灯仍未亮，还需要一个动作。"
       }
     },
     {
@@ -243,7 +251,19 @@ window.BOOK = {
           "en": "Remember the order of her two actions.",
           "zh": "回想她两个动作的顺序。"
         }
+      },
+      "evidence": {
+        "en": "The lamp shone. Mina had found the problem, fitted the gear, and turned the wheel.",
+        "zh": "灯亮了。Mina找到了问题，装好齿轮，再转动红轮。"
       }
     }
-  ]
+  ],
+  "description": {
+    "en": "One quiet workshop. One missing piece. A light waiting to return.",
+    "zh": "安静的工作室，缺少的零件，等待再次亮起的灯。"
+  },
+  "ending": {
+    "en": "The light returns. Use the evidence to retell how it happened.",
+    "zh": "灯又亮了。用证据复述它是怎样亮起来的。"
+  }
 };

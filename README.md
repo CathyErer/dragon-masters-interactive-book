@@ -1,55 +1,78 @@
-# Dragon Masters Interactive Book · 本地候选
+# Dragon Masters Interactive Book
 
-把有权使用的故事制作成场景优先、双语、可交互的浏览器读物。包含完整制作流程、可复制提示词、角色一致性与分状态绘图方法、音乐制作、数据驱动页面模板和检查工具。无需私人笔记库或原作者电脑。
+**0.3.0 · CathyErer · MIT**
 
-**状态：0.2.0 本地审阅候选，未公开发布，作者 CathyErer，MIT 许可证。** 本目录没有第三方整书、角色素材或私人课程档案。已加入“使用者提供原书＋DM1制作配置”的同书工作流及固定轨迹拖动组件。原创三幕示例用于演示机制，不代表整本长篇书已一键自动化或通过独立复现。
+面向《Dragon Masters #1: Rise of the Earth Dragon》的完整互动书制作 Skill：从使用者提供的原书，到逐章证据、人物与场景、插图、音乐、真实互动、连续故事、检查与交付。需要可读取的原书和制作工具；没有附送原书或私人整书成品。
 
-## 五分钟运行
+## 安装与调用
 
-1. 用浏览器打开 `skills/dragon-masters-interactive-book/assets/starter/index.html`。
-2. 点击 Open the book，再用顶部 Music 按钮试听。可观察空齿轮孔、拖动齿轮、按住红轮点灯，并完成三道题。
-3. 点击 EN / 中英切换；刷新可恢复进度；Restart需要确认。
-4. 若要新建自己的项目：在本目录运行以下命令（Python 3标准库，无第三方包）：
+下载本仓库，将`skills/dragon-masters-interactive-book/`整个文件夹放进你的助手支持的Skills目录。必须包含references、scripts与assets，不能只复制SKILL.md；也可将整个文件夹交给能读取本地文件的助手。仓库ZIP是完整项目，`.skill`安装包只含Skill文件夹；不同客户端安装方式以其支持方式为准。
 
-```sh
-python3 skills/dragon-masters-interactive-book/scripts/new_project.py --destination ./my-book
-python3 skills/dragon-masters-interactive-book/scripts/validate_book.py ./my-book
+调用示例：
+
+```text
+请使用 dragon-masters-interactive-book，制作《Rise of the Earth Dragon》第一本互动书。
+原书：[实际文件与版本]；用途：[有权使用的范围]；读者：[年龄/英文水平]；
+视觉参考：[允许使用的文件或待补]；输出：[新的项目目录]。
+请读取整本，先完成16章证据、人物与场景/衔接设计，再给我样章审阅。
+确认后继续完整制作，保留连续故事、English/中英、剧情音乐、16个章级Story Check、
+四个不阻挡主线的可选Retell及证据记录。把原书内容落实到画面、操作和可见结果。
+不要把灯塔示例换个书名当交付，不要从记忆补缺页。列明缺项和实际测试范围。
 ```
 
-目标目录必须不存在，工具不会覆盖已有作品。直接打开`my-book/index.html`即可。若浏览器限制本地文件，运行`python3 -m http.server 8000 --directory my-book`，再访问本地8000端口。地址来源切换会使用另一份浏览器存档。
+明确只给一章时只做该章；不要虚构其余章节。已有同一范围的批准不重复询问；用户要求先讨论时停止在方案。
 
-## 怎么制作一本新书
+## 两个清楚分开的入口
 
-把`skills/dragon-masters-interactive-book/`交给支持本地Skill的助手，或直接把其中`SKILL.md`作为操作说明。公开候选的安装不是运行示例的前提。不要覆盖已有同名私用Skill；先放入独立测试环境。
+**制作DM1（默认）：**
 
-开始时提供：可读取的书籍来源、使用范围、读者年龄/英文水平、输出语言、目标电脑尺寸、是否需音乐，以及角色/风格参考的使用许可。然后使用`references/prompts.md`的完整启动提示词。
+```sh
+python3 skills/dragon-masters-interactive-book/scripts/new_project.py --destination ./my-dm1 --profile dm1
+```
 
-| 制作环节 | 使用文件 | 交付物 |
+生成待填的`SOURCE.md`、16章`production.json`、证据CSV、人物表、场景状态表、提示词/素材记录、音乐表和QA记录。`engine-reference/`只是代码机制参考；完成来源与样章审阅后，实际作品放`book/`。这是制作工程，不是已生成整本书。
+
+制作其他已提供的原创故事时用`--profile original --title "故事名"`，再按真实章节填写production.json；不要硬套DM1的16章。
+
+**只看原创机制演示：**
+
+```sh
+python3 skills/dragon-masters-interactive-book/scripts/new_project.py --destination ./demo --profile demo
+```
+
+打开`demo/index.html`即可。观察→移动零件→点亮灯；示例SVG和本地合成音乐均原创。每次复制使用独立保存ID。它不代表DM1内容或精修2.5D画质。
+
+## 全流程文件
+
+| 阶段 | 入口 | 可检查产出 |
 |---|---|---|
-| 来源、章节和分镜 | `references/workflow.md`、`prompts.md` | 带证据的场景表与连续性表 |
-| 人物和绘图 | `references/art-direction.md` | 角色卡、状态图片、道具层、来源记录 |
-| 音乐与声音 | `references/music.md`、`scripts/generate_score.py` | 情绪段落、循环音乐、切换点 |
-| 互动与动画 | `references/interaction.md`、`assets/starter/app.js` | 真实操作、可见结果、Quiz、存档 |
-| 接入自己的书 | `references/data-contract.md` | `story.json`和可直接打开的`story.js` |
-| 修复与交付 | `references/qa.md`、`scripts/validate_book.py` | 技术检查和人工审阅清单 |
+| 读原书、查缺页 | references/workflow.md | 版本、页码、章节与必需事件 |
+| DM1逐章设计 | references/rise-of-the-earth-dragon.md、dm1-chapter-checkpoints.md | 全16章事件/场景覆盖、揭示时序 |
+| 人物与绘图 | references/art-direction.md、prompts.md | 身份参考、前后状态、透明道具、实际图 |
+| 音乐制作 | references/music.md | 事件情绪表、本地音频、来历和试听 |
+| 互动与页面 | references/interaction.md、data-contract.md | 多幕章节、手势、状态、Quiz/Journal/Retell |
+| 记录和验收 | references/production-records.md、qa.md | 来源对照、素材来历、哈希与真实测试 |
 
-## 依赖、费用和人工步骤
+运行模板支持observe、drag、hold、trace、advance及固定轨迹sprite；每幕可无Quiz，多幕共享章级检查；包含可选关键词排序复述和已完成证据Journal。封面、说明、结尾从书籍数据读取。更复杂的擦除、分层人物演出或连续镜头需要按计划扩展并测试，不会被一个通用按钮自动替代。
 
-- 示例浏览器运行不需要API、账号、网络、构建工具或付费音乐服务。示例音乐由附带脚本本地合成；可重新生成。
-- 新故事的内容分析需要读到用户实际提供的材料。扫描书可能需要OCR或页面图检查；没有来源不能仅凭书名编造。
-- 高质量插图需要用户可用的图像生成/编辑工具或画师。提示词和完整步骤已附；不同工具可能收费，费用与使用条款由所选服务决定，本套件不代购、不承诺免费或自动授权上传。
-- 可用图像编辑器输出透明道具；可选Pillow用于图片压缩，不是运行模板的依赖。当前示例采用原创代码绘制SVG，来源及重建方式见`ASSET_PROVENANCE.md`；它是机制演示，不冒充精修2.5D书籍插画。
-- 浏览器自动测试可选Node.js + Playwright；手动检查不要求安装它。`tests/browser.cjs`通过环境变量指定实际依赖，不硬编码某台电脑。
-- 人工必须检查：原文含义、角色是否一致、动画是否自然、图中文字/道具是否正确、热点实际位置、音乐听感，以及发布材料的权利状态。
+## 制作检查
 
-## 本版实现范围
+```sh
+python3 skills/dragon-masters-interactive-book/scripts/sync_story.py my-dm1/book
+python3 skills/dragon-masters-interactive-book/scripts/validate_book.py my-dm1/book
+python3 skills/dragon-masters-interactive-book/scripts/validate_production.py my-dm1
+```
 
-已提供observe/drag/hold/trace基础组件，以及独立的固定轨迹sprite组件`track-flight.js`（距离自适应局部投影、连续位置、帧合并、transform、取消清理）。提供键盘替代、场景坐标、短气泡与Quiz分时显示、稳定乱序、EN/中英、存档、预解码、长按反馈、结果图、配乐淡化和静音记忆。示例直接覆盖observe/drag/hold；固定轨迹有独立快速拖动测试。trace保留参考实现，本版不宣称其独立专项已通过。不是骨骼动画、自由走路、在线多人或从PDF一键出整书。
+第一项同步可直接本地打开的数据；第二项查运行依赖和字段；第三项查16章事件、顺序、衔接、检查点、可选复述、素材来源与当前QA记录。缺项会失败，不能只靠16个标题冒充整书。
 
-## 同书制作与可复现构建
+依赖：Python 3.9+标准库；作品运行无需账号/API/网络。新书图像需可用的图像工具或画师，可能有成本；音乐可用附带本地生成器试配。人工需核对来源、角色、画面、操作手感与听感。不得把原书/参考素材自动上传外部服务。
 
-希望做《Rise of the Earth Dragon》时，提供实际可读取原书，使用`references/rise-of-the-earth-dragon.md`的完整启动提示词。它要求同一故事、证据对应、人物与剧情揭示一致；不会把灯塔示例当作替代故事，也不承诺像素级同图。角色参考由使用者在自己的项目中准备，不随公开包附送。
+开发验证：`python3 tests/contracts.py`；`node tests/browser.cjs`与`node tests/production-browser.cjs`需Playwright，可用PLAYWRIGHT_MODULE与CHROME_PATH指定本机依赖。完整命令与证据范围见QA.md。
 
-重建原创示例：`python3 skills/dragon-masters-interactive-book/scripts/build_demo.py`。重建后运行`validate_book.py`；浏览器测试：`node tests/browser.cjs`（需Playwright，必要时通过PLAYWRIGHT_MODULE和CHROME_PATH指定本机安装）。快速拖动、反复失焦取消和刷新保存均需实际测试。制作流程、人工视觉/听感以及独立整书复现的证据分别报告。
+**证据边界：**原创示例与组件回归、缺项拦截以及隔离调用审查分别记录；没有据此声称另一位使用者已独立生成并验收整本DM1。AI插图与音乐也不保证与私用成品相同。
 
-作者 CathyErer，采用 MIT 许可证（见 LICENSE）；许可范围见 ASSET_PROVENANCE.md。发布前请确认目标仓库。此候选不上传任何网站，不包含已发布仓库链接。
+## 许可和交付
+
+代码、制作说明及原创示例采用MIT，见LICENSE和ASSET_PROVENANCE.md。Dragon Masters书籍文字、角色及第三方视觉参考不因该许可获得再发布权；使用者提供的来源保留在自己的授权项目中。
+
+仓库：[CathyErer/dragon-masters-interactive-book](https://github.com/CathyErer/dragon-masters-interactive-book)。本仓库只发布工具，不附私人笔记、原书PDF、人物素材或私人课堂成品。打包：`python3 scripts/package_candidate.py --destination NEW_OUTPUT_DIR`。

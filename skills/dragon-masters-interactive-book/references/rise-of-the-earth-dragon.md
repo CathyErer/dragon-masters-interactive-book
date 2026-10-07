@@ -2,11 +2,13 @@
 
 This profile is a production specification, not the book, a story transcription, or a ready-made adaptation. The reader supplies a readable copy they are permitted to use. Do not substitute model memory for missing pages. Do not distribute supplied source files with the toolkit.
 
+Read [dm1-chapter-checkpoints.md](dm1-chapter-checkpoints.md) and [production-records.md](production-records.md) before expanding the book. Initialize with new_project.py --profile dm1; do not rename the demo.
+
 ## Inputs and output contract
 
 - Read the supplied edition in full; establish its chapter/page map. Expect Book 1 with 16 chapters, but verify rather than silently forcing the count when the source differs.
 - Produce the **same source story**, preserving event order, participants, causes, outcomes and unresolved questions. The UI, wording of short adapted cues, camera compositions and original score may differ. Do not replace it with the lighthouse demo.
-- Write local project files: SOURCE.md, chapter-evidence.csv, character-bible.md, scene-state-table.json, music-cues.json, prompts.jsonl, art-provenance.json, editable runtime files and QA reports. Source excerpts stay in the user's private project; the public kit contains none.
+- Write local project files: SOURCE.md, chapter-evidence.csv, character-bible.md, production.json, scene-state-table.json, music-cues.json, prompts.jsonl, art-provenance.json, editable runtime files and QA reports. Source excerpts stay in the user's private project; the public kit contains none.
 - Scope: desktop illustrated reading, English with optional Chinese, scene actions, stable saved progress, event-driven instrumental music, short text dialogue, per-chapter understanding checks and optional retell. No default character voice, free walking or invented sequel.
 
 ## Character verification checklist

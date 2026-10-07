@@ -13,7 +13,7 @@
 
 ## 状态模型
 
-steps[sceneId]：0=动作未完成，1=结果可观察，2=Quiz，3=Quiz完成。主线只有3才能进入下一幕。语言、阶段、选项顺序保存在独立bookId键中；mood由阶段推导。不会保存鼠标一半的位置。新书改id，避免与示例共用存档。
+steps[sceneId]：0=动作未完成，1=结果可观察，2=Quiz，3=Quiz完成。主线只有3才能进入下一幕；quiz:null的中间幕在观察结果后经Continue到3，不强制附题。语言、阶段、选项顺序保存在独立bookId键中；mood由阶段推导。不会保存鼠标一半的位置。新书改id，避免与示例共用存档。
 
 临时状态不进存档：pointer capture、动画帧、Audio实例、加载epoch和AbortController。每次渲染取消旧监听/手势；异步图片只能由当前epoch提交。图片失败保持上一个安全阶段并提供Retry，不把动作提前写成成功。
 
@@ -25,7 +25,7 @@ stage保持与图片相同比例，所有热点/道具坐标使用0..100百分�
 
 ## Quiz与阅读
 
-动作完成后先看result，自主进入Story check，避免图片闪一下就被题目盖住。Quiz阶段不渲染caption；Read story仍是明确主动打开的复习入口。答错提示寻找证据，三次后可回看；不自动把错答算对。通过后给下一幕/合书，不增加无意义确认关卡。
+动作完成后先看result，自主进入Story check，避免图片闪一下就被题目盖住。Quiz阶段不渲染caption；Read story与Journal在Quiz期间隐藏并关闭；Review evidence明确退回结果/复习阶段，再进入题目。答错提示寻找证据，三次后可回看；不自动把错答算对。通过后给下一幕/合书，不增加无意义确认关卡。
 
 ## 动画升级路径
 
@@ -46,6 +46,10 @@ const flight = mountTrackFlight({
 });
 ```
 
-函数中的sceneAbortController和commitThisSceneAction由宿主提供；在模板app.js中可分别用当前abort和commit。它是可选独立组件，尚未加入story.json的action枚举；不要填一个未支持的type然后宣称自动接入。
+函数中的sceneAbortController和commitThisSceneAction由宿主提供；在模板app.js中可分别用当前abort和commit。0.3.0已接入action.type=track，宿主负责预解码sprite、完成保存、取消与销毁。也支持advance及quiz:null；字段见data-contract.md。
 
 要做更复杂人物动作：先准备相同角色的分层/关键帧和干净背景，再实现固定故事动作，测试边缘、遮挡与地面接触。不要拿静态整图裁块移动假装自然动画。图片加载与声音是可失败依赖，不能绑死故事状态机。
+
+## 整书补充
+
+封面/说明/结尾由书籍数据读取；新建生产工程不把原创演示当成书稿。每幕chapterId、eventIds映射到制作记录。evidence在动作完成后进入Journal；retell为通过后的可选关键词排序，结果不影响主线。动作与检查点分离，允许Quiz之后仍有章末剧情。
